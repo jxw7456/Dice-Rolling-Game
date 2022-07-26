@@ -8,7 +8,7 @@ body {
     font-family: cursive;
 }
 
-.welcome {
+.welcome .centered {
     display: flex;
     flex-direction: column;
     margin: 0;
@@ -47,5 +47,19 @@ body {
 .footer {
     background-color: #f1f1f1;
     padding: 10px;
+}
+
+.rooms #dicePreviewDiv {
+    margin: 1em 0;
+    border: 1px solid grey;
+    padding: 1em;
+    min-height: 56px;
+    background: #ccc;
+    background: linear-gradient(#ccc, #e9e9e9 45%, #f0f0f0 50%, #e9e9e9 55%, #bbb);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 </style>

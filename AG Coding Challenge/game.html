@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dice Rolling Game</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
-  </head>
-  <body class="welcome">
-    <main>
-        <h1>Dice Rolling Game</h1>
-        <div class="topnav">
-            <a href="./index.html">Rules</a>
-            <a href="./game.html">Game</a>
-            <a href="#">Highscores</a>
-        </div>
-        <div class="content">
-            <!---Game will go here!--->
-            <p>Please enter the name for your Dice Room. Once entered, click "Roll Some Die" to enter the room. Other users may join your room by entering the room name, or via a web address.</p>
-            <p>Have Fun!</p>
-            <form action="/welcome" accept-charset="UTF-8" method="get">
-                <input id="Dice Room Name" type="text" name="name" placeholder="Room Name">
-                <input type="submit" name="commit" value="Roll Some Die!" data-disable-with="Roll Some Die!">
-            </form>
-            <!---<p class="error">Please enter a name.</p>--->
-        </div>
-        <div class="footer">
-            <p>2022 JaJuan Webster</p>
-        </div>
-    </main>
-	<script src="game.js"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dice Rolling Game</title>
+        <link rel="stylesheet" href="./style.css">
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+        <script src="game.json"></script>
+    </head>
+    <body class="welcome">
+        <main>
+            <h1>Dice Rolling Game</h1>
+            <div class="topnav">
+                <a href="./index.html">Rules</a>
+                <a href="./game.html">Game</a>
+                <a href="#">Highscores</a>
+            </div>
+            <div class="centered">
+                <!---Game will go here!--->
+                <p>Please enter the name for your Dice Room. Once entered, click "Roll Some Die!" to enter the room. Other users may join your room by entering the room name, or via a web address.</p>
+                <p>Have Fun!</p>
+                <form action="/welcome" accept-charset="UTF-8" method="get">
+                    <input id="room_name" type="text" name="name" placeholder="Room Name">
+                    <input type="submit" name="commit" value="Roll Some Die!" data-disable-with="Roll Some Die!">
+                </form>
+                <p class="error">Please enter a name.</p>
+            </div>
+            <div class="footer">
+                <p>2022 JaJuan Webster</p>
+            </div>
+        </main>
+    </body>
 </html>

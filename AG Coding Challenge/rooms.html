@@ -1,84 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dice Rolling Game</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-  </head>
-  <body class="welcome">
-    <main>
-        <!---Room Name--->
-        <div></div>
-        <h2 id="room_name">
-            <a href="/welcome"></a>
-        </h2>
-        <form action="/skill_checks" accept-charset="UTF-8" data-remote="true" method="post">
-            <input name="utf8" type="hidden" value="✓">
-            <div class="playerPrefs">
-                <label for="player">Name: <input name="skill_check[player]" id="player" type="text" value="Name"></label>
-            </div>
-            <input name="skill_check[image_url]" type="hidden" value="Not implemented">
-            <input name="skill_check[dice_set]" type="hidden" value="basic">
-            <input name="skill_check[room_id]" type="hidden" value="76752">
-            <!---Dice Images Tray--->
-            <div class="dice-tray">
-                <img onclick="addDie('d4')" src="assets/d4.png" alt="D4">
-                <input name="skill_check[dice][][count]" id="die_count_d4" type="hidden" value="0" readonly="">
-                <input name="skill_check[dice][][die_type]" type="hidden" value="d4">
-                <img onclick="addDie('d6')" src="assets/d6.png" alt="D6">
-                <input name="skill_check[dice][][count]" id="die_count_d6" type="hidden" value="0" readonly="">
-                <input name="skill_check[dice][][die_type]" type="hidden" value="d6">
-            </div>
-            <!---Dice Images Preview--->
-            <div id="dicePreviewDiv">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d4" onclick="removeDie('d4', this)" src="assets/d4.png" alt="D4">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-                <img class="hidden-die" data-die-type="d6" onclick="removeDie('d6', this)" src="assets/d6.png" alt="D6">
-            </div>
-            <input type="submit" name="commit" value="Roll It!" data-disable-with="Roll It!">
-        </form>
-        <!---Rolling Results--->
-        <div id="roomsSkillChecksDiv">
-            <div class="skillRow">
-                <div class="userName">
-                    <span></span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dice Rolling Game</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+        <script src="game.json"></script>
+    </head>
+    <body class="welcome">
+        <main>
+            <!---Room Name--->
+            <div></div>
+            <h2 id="roomName">
+                <a href="/welcome"></a>
+            </h2>
+            <form action="/skill_checks" accept-charset="UTF-8" data-emote="true" method="post">
+                <input name="utf8" type="hidden" value="✓">
+                <div class="playerPrefs">
+                    <label for="player">Name: 
+                        <input name="skill_check[player]" id="player" type="text" value="Name">
+                    </label>
                 </div>
-                <div class="skillData">
-                    <div class="diceSides"></div>
-                    <div class="interpretedResults">
-                        <span class="dieRollSum">
-                            <span class="dieRollTitle"></span>
-                        </span>
-                        <span class="dieRollSet"> 
-                            <span class="dieRollTitle"></span>
-                        </span>
-                        <span class="dieRollSet"> 
-                            <span class="dieRollTitle"></span>
-                        </span>
+                <input name="skill_check[image_url]" type="hidden" value="Not implemented">
+                <input name="skill_check[dice_set]" type="hidden" value="basic">
+                <input name="skill_check[room_id]" type="hidden" value="76752">
+                <!---Dice Images Tray--->
+                <div class="dice-tray">   
+                    <img onclick="addDie('d4')" src="/assets/d4.png" alt="D4">
+                    <input name="skill_check[dice][][count]" id="die_count_d4" type="hidden" value="0" readonly="">
+                    <input name="skill_check[dice][][die_type]" type="hidden" value="d4">
+                    <img onclick="addDie('d6')" src="/assets/d6.png" alt="D6">
+                    <input name="skill_check[dice][][count]" id="die_count_d6" type="hidden" value="0" readonly="">
+                    <input name="skill_check[dice][][die_type]" type="hidden" value="d6">
+                </div>
+                <!---Dice Images Preview--->
+                <div id="dicePreviewDiv">              
+                    <img onclick="addDie('d4')" src="/assets/d4.png" alt="D4">
+                    <input name="skill_check[dice][][count]" id="die_count_d4" type="hidden" value="0" readonly="">
+                    <input name="skill_check[dice][][die_type]" type="hidden" value="d4">
+                    <img onclick="addDie('d6')" src="/assets/d6.png" alt="D6">
+                    <input name="skill_check[dice][][count]" id="die_count_d6" type="hidden" value="0" readonly="">
+                    <input name="skill_check[dice][][die_type]" type="hidden" value="d6">
+                </div>
+                <input type="submit" name="commit" value="Roll It!" data-disable-with="Roll It!">
+            </form>
+            <!---Rolling Results--->
+            <div id="roomsSkillChecksDiv">
+                <div class="skillRow">
+                    <div class="userName">
+                        <span></span>
+                    </div>
+                    <div class="skillData">
+                        <div class="diceSides"></div>
+                        <div class="interpretedResults">
+                            <span class="dieRollSum">
+                                <span class="dieRollTitle"></span>
+                            </span>
+                            <span class="dieRollSet"> 
+                                <span class="dieRollTitle"></span>
+                            </span>
+                            <span class="dieRollSet"> 
+                                <span class="dieRollTitle"></span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <p>2022 JaJuan Webster</p>
-        </div>
-    </main>
-	<script src="game.js"></script>
-  </body>
+            <div class="footer">
+                <p>2022 JaJuan Webster</p>
+            </div>
+        </main>
+    </body>
 </html>
